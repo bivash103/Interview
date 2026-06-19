@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+
+
+
+*{
+    font-family: "Outfit", sans-serif;
+}
+@theme{
+   --color-primary :#2563EB;
+   --color-primary-dull :#1F58D8;
+   --color-light :#F1F5F9;
+   --color-borderColor :#c4c7d2
+}
+
+.bounce-arrow {
+  display: inline-block;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+  100% { transform: translateY(0); }
+}
+
+
+html, body {
+  overflow-x: hidden;
+}
