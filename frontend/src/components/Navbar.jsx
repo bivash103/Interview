@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { PiMicrophoneStageFill } from "react-icons/pi";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -13,6 +13,18 @@ const Navbar = () => {
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+
+  useEffect(() => {
+    const closeProfile = () => {
+      setProfileOpen(false);
+    };
+
+    document.addEventListener("click", closeProfile);
+
+    return () => {
+      document.removeEventListener("click", closeProfile);
+    };
+  }, []);
 
   const menuLinks = [
     { name: "Home", path: "/" },
@@ -74,9 +86,12 @@ const Navbar = () => {
             <div className="flex items-center gap-4">
               {/* PROFILE */}
               {token && (
-                <div className="relative">
+                <div className="relative" onClick={(e) => e.stopPropagation()}>
                   <button
-                    onClick={() => setProfileOpen(!profileOpen)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setProfileOpen(!profileOpen);
+                    }}
                     className="w-11 h-11 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white flex items-center justify-center text-2xl shadow-lg hover:scale-105 transition"
                   >
                     <CgProfile />

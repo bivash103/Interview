@@ -6,6 +6,7 @@ import userRouter from './routes/userRoutes.js';
 import interviewRoutes from './routes/interviewRoutes.js'
 import companyRouter from './routes/companyRoutes.js';
 import router from './routes/sendGridRoute.js';
+import geminiRouter from './routes/geminiRoutes.js';
 
 // init
 const app = express();
@@ -26,6 +27,7 @@ app.use('/api/user', userRouter);
 app.use('/api/interviews', interviewRoutes);
 app.use('/api/company', companyRouter);
 app.use('/api/email', router);
+app.use('/api/msg', geminiRouter);
 
 // server start
 const PORT = process.env.PORT || 3000;
